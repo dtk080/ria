@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-2">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link active" id="v-pills-local-tab" data-toggle="pill" href="#v-pills-local" role="tab" aria-controls="v-pills-local"
+                aria-selected="true">Local</a>
+            <a class="nav-link" id="v-pills-drive-tab" data-toggle="pill" href="#v-pills-drive" role="tab" aria-controls="v-pills-drive"
+                aria-selected="false">Drive</a>
+            <a class="nav-link" id="v-pills-google-tab" data-toggle="pill" href="#v-pills-google" role="tab" aria-controls="v-pills-google"
+                aria-selected="false">Google</a>
+        </div>
+    </div>
+    <div class="col-10">
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-local" role="tabpanel" aria-labelledby="v-pills-local-tab">
+                <app-local-file></app-local-file>
+            </div>
+            <div class="tab-pane fade" id="v-pills-drive" role="tabpanel" aria-labelledby="v-pills-drive-tab">
+                <app-drive-file></app-drive-file>
+            </div>
+            <div class="tab-pane fade" id="v-pills-google" role="tabpanel" aria-labelledby="v-pills-google-tab">
+                <app-google-file></app-google-file>
+            </div>
+        </div>
+    </div>
+</div>

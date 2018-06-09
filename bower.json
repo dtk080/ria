@@ -1,0 +1,22 @@
+{
+  "name": "fileManager",
+  "description": "",
+  "main": "",
+  "authors": [],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "font-awsome#^5.0.13",
+    "bootstrap": "^4.1.1",
+    "popper.js": "^1.14.3",
+    "jquery": "^3.3.1"
+  }
+}
