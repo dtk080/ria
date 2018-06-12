@@ -16,6 +16,8 @@ export class DriveFileComponent implements OnInit {
     public remoteFiles: TreeviewItem[] = [];
     public checkedRemoteFiles: TreeviewItem[] = [];
     public config;
+    public isLoading: boolean;
+
     constructor(private userService: AuthService,
         private authService: GoogleAuthService,
         private gapiService: GoogleApiService,
@@ -27,8 +29,7 @@ export class DriveFileComponent implements OnInit {
             hasAllCheckBox: false,
             hasFilter: false,
             hasCollapseExpand: false,
-            decoupleChildFromParent: false,
-            maxHeight: 300
+            decoupleChildFromParent: false
         }
     }
 
@@ -39,6 +40,9 @@ export class DriveFileComponent implements OnInit {
     }
 
     isLoggedIn(): boolean {
+        if (!this.isLoading && (!this.driveOriginalFiles || this.driveOriginalFiles.length === 0)) {
+            this.getFiles();
+        }
         return this.userService.isUserSignedIn();
     }
 
@@ -47,24 +51,17 @@ export class DriveFileComponent implements OnInit {
     }
 
     getFiles() {
+        this.isLoading = true;
         this.googleService.getAllFiles().subscribe(
             response => {
                 this.driveOriginalFiles = response.items;
                 for (let item = 0; item < response.items.length; item++) {
                     const element = response.items[item];
-                    this.driveFiles.push(new TreeviewItem({ text: element.title, value: element.id, checked: false }))
+                    this.driveFiles.push(new TreeviewItem({ text: element.title, value: element.id, checked: false }));
+                    this.isLoading = false;
                 }
             }
         );
-        /* this.remoteService.getAllFiles().subscribe(
-            response => {
-                this.remoteOriginalFiles = response.items;
-                for (let item = 0; item < response.items.length; item++) {
-                    const element = response.items[item];
-                    this.remoteFiles.push(new TreeviewItem({ text: element.title, value: element.id, checked: false }))
-                }
-            }
-        ) */
     }
 
     onSelectedDriveChange(ids: any) {
@@ -78,30 +75,18 @@ export class DriveFileComponent implements OnInit {
     addToRemote() {
         for (let r = 0; r < this.checkedDriveFiles.length; r++) {
             let element = this.driveFiles.filter(x => x.value === this.checkedDriveFiles[r])[0];
-
-            // service call
-            let originalElement = this.driveOriginalFiles.filter(x => x.value === this.checkedDriveFiles[r])[0];
-           /*  this.remoteService.save(originalElement).subscribe(
-                response => {
-                    element.checked = false;
-                    this.remoteFiles.push(new TreeviewItem({ text: element.text, value: element.value, checked: false }));
-                }
-            ); */
+            element.checked = false;
+            this.remoteFiles.push(new TreeviewItem({ text: element.text, value: element.value, checked: false }));
         }
+        this.checkedDriveFiles = [];
     }
 
     addToDrive() {
         for (let r = 0; r < this.checkedRemoteFiles.length; r++) {
             let element = this.remoteFiles.filter(x => x.value === this.checkedRemoteFiles[r])[0];
-
-            // service call
-            let originalElement = this.remoteOriginalFiles.filter(x => x.value === this.checkedDriveFiles[r])[0];
-            /* this.googleService.save(originalElement).subscribe(
-                response => {
-                    element.checked = false;
-                    this.driveFiles.push(new TreeviewItem({ text: element.text, value: element.value, checked: false }));
-                }
-            ); */
+            element.checked = false;
+            this.driveFiles.push(new TreeviewItem({ text: element.text, value: element.value, checked: false }));
         }
+        this.checkedRemoteFiles = [];
     }
 }

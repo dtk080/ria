@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { FileDropModule } from 'ngx-file-drop';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 let gapiClientConfig: NgGapiClientConfig = {
   client_id: "810456948480-jolec51rpg3bpdld5lkgjf6k884i9lhp.apps.googleusercontent.com",
@@ -51,6 +52,7 @@ let gapiClientConfig: NgGapiClientConfig = {
       provide: NG_GAPI_CONFIG,
       useValue: gapiClientConfig,
     }),
+    PerfectScrollbarModule
   ],
   providers: [
     GoogleService,

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 import { AppComponent } from './app.component';
 import { FileManagerModule } from './file-manager/file-manager.module';
@@ -18,9 +19,11 @@ import { CommonModule } from '@angular/common';
         CommonModule,
         SharedModule,
         FileManagerModule,
-        NgbModule.forRoot()
+        NgbModule.forRoot(),
+        PerfectScrollbarModule
     ],
-    providers: [],
+    providers: [
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

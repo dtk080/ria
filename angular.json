@@ -27,7 +27,9 @@
               "bower_components/bootstrap/dist/css/bootstrap.min.css",
               "bower_components/font-awesome/web-fonts-with-css/css/fontawesome.min.css",
               "bower_components/font-awesome/web-fonts-with-css/css/fa-regular.min.css",
-              "bower_components/font-awesome/web-fonts-with-css/css/fa-solid.min.css"
+              "bower_components/font-awesome/web-fonts-with-css/css/fa-solid.min.css",
+              "bower_components/font-awesome/web-fonts-with-css/css/fa-brands.min.css",
+              "node_modules/ngx-perfect-scrollbar/dist/lib/perfect-scrollbar.component.css"
             ],
             "scripts": [
               "bower_components/jquery/dist/jquery.min.js",

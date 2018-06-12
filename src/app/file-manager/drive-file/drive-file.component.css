@@ -4,3 +4,29 @@ button.btn.btn-primary {
     display: block;
     margin-top: 20px;
 }
+
+.col-5 {
+    margin-top: 20px;
+}
+
+i.fa-arrow-alt-circle-up,
+i.fa-arrow-alt-circle-down {
+    display: none;
+}
+
+i.fa-arrow-alt-circle-left,
+i.fa-arrow-alt-circle-right {
+    display: block;
+}
+
+@media screen and (max-width: 768px) {
+    i.fa-arrow-alt-circle-up,
+    i.fa-arrow-alt-circle-down {
+        display: block;
+    }
+
+    i.fa-arrow-alt-circle-left,
+    i.fa-arrow-alt-circle-right {
+        display: none;
+    }
+}
