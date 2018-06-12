@@ -1,3 +1,24 @@
-<p>
-  drive-file works!
-</p>
+<div *ngIf="!isLoggedIn(); then show_login else show_files;"></div>
+<ng-template #show_login>
+    <button class="btn-primary" (click)="signIn()">Sign In</button>
+</ng-template>
+<ng-template #show_files>
+    <div class="row">
+        <div class="col-5">
+            <ngx-treeview [config]="config" [items]="driveFiles" (selectedChange)="onSelectedDriveChange($event)">
+            </ngx-treeview>
+        </div>
+        <div class="col-2">
+            <button class="btn btn-primary" type="submit" (click)="addToRemote()">
+                <i class="far fa-arrow-alt-circle-right"></i>
+            </button>
+            <button class="btn btn-primary" type="submit" (click)="addToDrive()">
+                <i class="far fa-arrow-alt-circle-left"></i>
+            </button>
+        </div>
+        <div class="col-5">
+            <ngx-treeview [config]="config" [items]="remoteFiles" (selectedChange)="onSelectedRemoteChange($event)">
+            </ngx-treeview>
+        </div>
+    </div>
+</ng-template>
